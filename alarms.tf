@@ -121,38 +121,38 @@ resource "aws_cloudwatch_dashboard" "main" {
        }
    ]
  }
- EOF
+EOF
 }
 
-resource "aws_cloudwatch_dashboard" "main_individual" {
-  count          = "${var.create_dashboard == "true" ? 1 : 0}"
-  dashboard_name = "CISBenchmark_Statistics_Individual"
-
-  dashboard_body = <<EOF
- {
-   "widgets": [
-     ${join(",",formatlist(
-       "{
-          \"type\":\"metric\",
-          \"x\":%v,
-          \"y\":%v,
-          \"width\":12,
-          \"height\":6,
-          \"properties\":{
-             \"metrics\":[
-                [ \"${local.metric_namespace}\", \"%v\" ]
-            ],
-          \"period\":300,
-          \"stat\":\"Sum\",
-          \"region\":\"${var.region}\",
-          \"title\":\"%v\"
-          }
-       }
-       ", local.layout_x, local.layout_y, local.metric_name, local.metric_name))}
-   ]
- }
- EOF
-}
+# resource "aws_cloudwatch_dashboard" "main_individual" {
+#   count          = "${var.create_dashboard == "true" ? 1 : 0}"
+#   dashboard_name = "CISBenchmark_Statistics_Individual"
+#
+#   dashboard_body = <<EOF
+#  {
+#    "widgets": [
+#      ${join(",",formatlist(
+#        "{
+#           \"type\":\"metric\",
+#           \"x\":%v,
+#           \"y\":%v,
+#           \"width\":12,
+#           \"height\":6,
+#           \"properties\":{
+#              \"metrics\":[
+#                 [ \"${local.metric_namespace}\", \"%v\" ]
+#             ],
+#           \"period\":300,
+#           \"stat\":\"Sum\",
+#           \"region\":\"${var.region}\",
+#           \"title\":\"%v\"
+#           }
+#        }
+#        ", local.layout_x, local.layout_y, local.metric_name, local.metric_name))}
+#    ]
+#  }
+#  EOF
+# }
 
 locals {
   # Two Columns

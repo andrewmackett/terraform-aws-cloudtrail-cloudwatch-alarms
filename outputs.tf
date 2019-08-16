@@ -8,7 +8,7 @@ output "dashboard_combined" {
   value       = "https://console.aws.amazon.com/cloudwatch/home?region=${var.region}#dashboards:name=${join("",aws_cloudwatch_dashboard.main.*.dashboard_name)}"
 }
 
-output "dashboard_individual" {
-  description = "URL to CloudWatch Individual Metric Dashboard"
-  value       = "https://console.aws.amazon.com/cloudwatch/home?region=${var.region}#dashboards:name=${join("",aws_cloudwatch_dashboard.main_individual.*.dashboard_name)}"
-}
+# output "dashboard_individual" {
+#   description = "URL to CloudWatch Individual Metric Dashboard"
+#   value       = "https://console.aws.amazon.com/cloudwatch/home?region=${var.region}#dashboards:name=${join("",aws_cloudwatch_dashboard.main_individual.*.dashboard_name)}"
+# }
