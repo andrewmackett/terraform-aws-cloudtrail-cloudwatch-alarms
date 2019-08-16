@@ -5,7 +5,7 @@ output "sns_topic_arn" {
 
 output "sns_topic_name" {
   description = "The ARN of the SNS topic used"
-  value       = aws_sns_topic.default.display_name
+  value       = aws_sns_topic.default.name
 }
 
 output "dashboard_combined" {
